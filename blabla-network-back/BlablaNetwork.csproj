@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>BlablaNetwork</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'blablanetwork' " />
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="4.1.0" />
+    <PackageReference Include="MySql.Data" Version="8.0.28" />
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Repositories\" />
+    <None Remove="Utils\" />
+    <None Remove="Domain\" />
+    <None Remove="Domain\Models\" />
+    <None Remove="Domain\Context\" />
+    <None Remove="MySql.Data" />
+    <None Remove="Dapper" />
+    <None Remove="Microsoft.Data.SqlClient" />
+    <None Remove="Authorization\" />
+    <None Remove="Domain\Models\Configuration\" />
+    <None Remove="BCrypt.Net-Next" />
+    <None Remove="Middlewares\" />
+    <None Remove="Domain\Models\Exceptions\" />
+    <None Remove="Domain\Repository\UserRepository\" />
+    <None Remove="Domain\Repository\FriendsRepository\" />
+    <None Remove="Domain\Models\Entities\" />
+    <None Remove="Repositories\Friends\" />
+    <None Remove="Repositories\Users\" />
+    <None Remove="Models\Configuration\" />
+    <None Remove="Models\Entities\" />
+    <None Remove="Models\Exceptions\" />
+    <None Remove="Models\ApiModels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Repositories\" />
+    <Folder Include="Utils\" />
+    <Folder Include="Models\" />
+    <Folder Include="Authorization\" />
+    <Folder Include="Middlewares\" />
+    <Folder Include="Repositories\Friends\" />
+    <Folder Include="Repositories\Users\" />
+    <Folder Include="Models\Configuration\" />
+    <Folder Include="Models\Entities\" />
+    <Folder Include="Models\Exceptions\" />
+    <Folder Include="Models\Api\" />
+  </ItemGroup>
+</Project>
