@@ -21,8 +21,8 @@ services:
     environment:
       MYSQL_DATABASE: 'db'
       MYSQL_USER: 'user'
-      MYSQL_PASSWORD: 'password'
-      MYSQL_ROOT_PASSWORD: 'password'
+      MYSQL_PASSWORD: 'YBpMaDbcPzZz'
+      MYSQL_ROOT_PASSWORD: 'YBpMaDbcPzZz'
     ports:
       - '3306:3306'
     expose:

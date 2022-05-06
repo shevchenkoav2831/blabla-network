@@ -2,7 +2,7 @@
 
 ## How to run it
 ````
-docker-compose up --build
+docker-compose up --build -d
 ````
 
 It will rise frontend, backend and database.

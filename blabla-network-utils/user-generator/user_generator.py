@@ -3,13 +3,13 @@ import random
 import bcrypt
 import mysql.connector
 
-db_host = 'localhost'
+db_host = '84.201.164.5'
 db_username = 'user'
 db_password = 'password'
 db_name = 'db'
 
-batch_size = 2
-total_size = 2
+batch_size = 100
+total_size = 100
 
 
 def read_all_lines(filename):

@@ -24,7 +24,7 @@ namespace BlablaNetwork.Middlewares
             }
             catch (Exception error)
             {
-                _logger.LogError(error, "An error has occured!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                _logger.LogError(error, "An error has occured");
 
                 var response = context.Response;
                 response.ContentType = "application/json";
