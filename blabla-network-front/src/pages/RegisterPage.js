@@ -3,14 +3,14 @@ import toast from "../../node_modules/react-simple-toasts/dist/index";
 
 import * as backend from "../api/backend";
 
-const GENDERS = ["Male", "Female", "Gender-fluid helicopter"];
+const genders = [ "Male", "Female", "Gender-fluid helicopter"];
 
 export default function RegisterPage({ login }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstname] = useState("");
   const [lastName, setLastname] = useState("");
-  const [gender, setGender] = useState("");
+  const [gender, setGender] = useState(genders[0]);
   const [city, setCity] = useState("");
   const [bio, setBio] = useState("");
 
@@ -26,6 +26,7 @@ export default function RegisterPage({ login }) {
       city: city,
       bio: bio,
     };
+
     try {
       const response = await backend.register(user);
       login(response.data.token, response.data.user);
@@ -51,8 +52,8 @@ export default function RegisterPage({ login }) {
           <input className="simple-input" type="text" placeholder="Lastname" onChange={(e) => setLastname(e.target.value)} />
         </div>
         <div>
-          <select className="simple-input" id="gender" name="gender" onChange={(e) => setGender(e.target.value)}>
-            {GENDERS.map((gender) => (
+          <select className="simple-input" id="gender" name="gender" onChange={(e) => setGender(e.target.value)} value={gender}>
+            {genders.map(gender => (
               <option key={gender} value={gender}>
                 {gender}
               </option>
