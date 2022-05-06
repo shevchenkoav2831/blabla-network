@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import toast from "../../node_modules/react-simple-toasts/dist/index";
 
 import UsersTable from "../components/UsersTable";
 import * as backend from "../api/backend";
@@ -12,9 +13,9 @@ export default function SearchUserPage() {
   const addFriend = async (id) => {
     try {
       await backend.sendFriendRequest(getCurrentUser().id, id);
-      setUsers(users.filter(u => u.id !== id));
+      setUsers(users.filter((u) => u.id !== id));
     } catch (error) {
-      console.log("[addFriend] error=%o", error);
+      toast(error.data.message);
     }
   };
 
@@ -28,10 +29,14 @@ export default function SearchUserPage() {
   const handleSearch = async (e) => {
     e.preventDefault();
 
-    const response = await backend.searchByFirstnameAndLastname(firstName, lastName);
-    setUsers(response.data);
+    try {
+      const response = await backend.searchByFirstnameAndLastname(firstName, lastName);
+      setUsers(response.data);
+    } catch (error) {
+      toast(error.data.message);
+    }
   };
-  
+
   return (
     <div>
       <div className="simple-form">

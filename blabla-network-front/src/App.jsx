@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
+import toast from "../node_modules/react-simple-toasts/dist/index";
 
 import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
@@ -31,13 +32,14 @@ export default function App() {
         setUserSession(response.data.token, response.data.user);
         setAuthenticated(true);
       } catch (error) {
+        toast(error.data.message);
         removeUserSession();
         setAuthenticated(false);
       }
-    }
+    };
 
     verifyToken();
-  }, [])
+  }, []);
 
   const login = (token, user) => {
     setUserSession(token, user);
@@ -47,7 +49,7 @@ export default function App() {
   const logout = () => {
     removeUserSession();
     setAuthenticated(false);
-  }
+  };
 
   return (
     <div className="App">
@@ -62,7 +64,7 @@ export default function App() {
 
           <PrivateRoute path="/profile" component={() => <UserProfilePage thisIsMe={true} />} />
           <PrivateRoute path="/user/:userId" component={() => <UserProfilePage thisIsMe={false} />} />
-          <PrivateRoute path="/friends" component={() => <FriendsPage />}  />
+          <PrivateRoute path="/friends" component={() => <FriendsPage />} />
           <PrivateRoute path="/search" component={() => <SearchUserPage />} />
           <PrivateRoute path="/requests" component={() => <FriendRequestsPage />} />
         </div>

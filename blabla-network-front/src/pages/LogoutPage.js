@@ -11,5 +11,5 @@ export default function LogoutPage({ logout }) {
     return () => clearTimeout(fakeTime);
   }, []);
 
-  return <h3>Logging out...</h3>
+  return <h3>Logging out...</h3>;
 }

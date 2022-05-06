@@ -1,15 +1,21 @@
 import React, { useState } from "react";
+import toast from "../../node_modules/react-simple-toasts/dist/index";
+
 import * as backend from "../api/backend";
 
-export default function LoginPage({login}) {
+export default function LoginPage({ login }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await backend.login(email, password);
-    login(response.data.token, response.data.user);
+    try {
+      const response = await backend.login(email, password);
+      login(response.data.token, response.data.user);
+    } catch (error) {
+      toast(error.data.message);
+    }
   };
 
   return (
@@ -31,4 +37,3 @@ export default function LoginPage({login}) {
     </div>
   );
 }
-

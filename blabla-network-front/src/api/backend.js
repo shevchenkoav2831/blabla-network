@@ -4,9 +4,9 @@ export const login = async (email, password) => {
   return http.post("/auth/login", { email: email, password: password });
 };
 
-export const register =  async (user) => {
-  return http.post("/auth/register", { user });
-}
+export const register = async (user) => {
+  return http.post("/auth/register", user);
+};
 export const verifyToken = async (token) => {
   return http.get("/auth/verifyToken", { params: { token: token } });
 };

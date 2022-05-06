@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import toast from "../../node_modules/react-simple-toasts/dist/index";
 
 import { getCurrentUser } from "../utils/common";
 import * as backend from "../api/backend";
@@ -18,7 +19,7 @@ export default function UserProfile({ thisIsMe }) {
         setUser(response.data);
         setLoading(false);
       } catch (error) {
-        console.log("[fetchUser] error=%o", error);
+        toast(error.data.message);
         setLoading(false);
       }
     };

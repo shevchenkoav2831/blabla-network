@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import toast from "../../node_modules/react-simple-toasts/dist/index";
 
 import UsersTable from "../components/UsersTable";
 import * as backend from "../api/backend";
@@ -15,7 +16,7 @@ export default function FriendsPage() {
         setFriends(response.data);
         setLoading(false);
       } catch (error) {
-        console.log("[fetchFriends] error=%o", error);
+        toast(error.data.message);
         setLoading(false);
       }
     };

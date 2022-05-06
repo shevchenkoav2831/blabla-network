@@ -3,7 +3,7 @@ import random
 import bcrypt
 import mysql.connector
 
-
+'''
 # localhost
 db_host = 'localhost'
 db_username = 'user'
@@ -16,7 +16,7 @@ db_host = '84.201.164.5'
 db_username = 'user'
 db_password = 'YBpMaDbcPzZz'
 db_name = 'db'
-'''
+
 batch_size = 100
 total_size = 1000
 

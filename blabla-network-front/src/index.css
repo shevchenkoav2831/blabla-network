@@ -45,6 +45,13 @@ code {
   float: right;
 }
 
+.simple-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+}
+
 /* simple form */
 .simple-form {
   display: flex;
