@@ -17,8 +17,8 @@ db_username = 'user'
 db_password = 'YBpMaDbcPzZz'
 db_name = 'db'
 
-batch_size = 100
-total_size = 1000
+batch_size = 5000
+total_size = 100000
 
 
 def read_all_lines(filename):
@@ -29,7 +29,7 @@ def read_all_lines(filename):
 
 
 def remove_duplicates(input):
-    print("Removing duplicates...", end='')
+    print("Removing duplicates... ", end='')
     visited = set()
     output = []
 
@@ -51,11 +51,13 @@ def get_random_users(size):
     cities = read_all_lines('cities.txt')
     bios = read_all_lines('bios.txt')
 
+    hash_password = bcrypt.hashpw(b'password', bcrypt.gensalt(4))
+
     for u in range(size):
         firstname = random.choice(firstnames)
         lastname = random.choice(lastnames)
         email = '{}{}{}@example.com'.format(lastname, firstname[0:2], random.randint(1111, 9999))
-        password = bcrypt.hashpw(b'password', bcrypt.gensalt(4))
+        password = hash_password
         gender = random.choice(genders)
         city = random.choice(cities)
         bio = random.choice(bios)
