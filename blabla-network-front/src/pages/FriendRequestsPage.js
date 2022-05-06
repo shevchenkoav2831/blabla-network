@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import UsersTable from "../components/UsersTable";
 import * as backend from "../api/backend";
+import { getCurrentUser } from "../utils/common";
 
 export default function FriendRequestsPage() {
   const [requests, setRequests] = useState([]);
@@ -9,13 +10,13 @@ export default function FriendRequestsPage() {
 
   const approve = async (userId) => {
     const requestId = requests.filter((r) => r.user.id === userId)[0].requestId;
-    await backend.approveRequest(requestId);
+    await backend.approveRequest(getCurrentUser().id, requestId);
     setRequests(requests.filter((r) => r.requestId !== requestId));
   };
 
   const reject = async (userId) => {
     const requestId = requests.filter((r) => r.user.id === userId)[0].requestId;
-    await backend.rejectRequest(requestId);
+    await backend.rejectRequest(getCurrentUser().id, requestId);
     setRequests(requests.filter((r) => r.requestId !== requestId));
   };
 
@@ -33,8 +34,7 @@ export default function FriendRequestsPage() {
   useEffect(() => {
     const fetchRequests = async () => {
       try {
-        const response = await backend.getFriendsRequests();
-        console.log("[fetchRequests] requests=%o", response.data);
+        const response = await backend.getFriendsRequests(getCurrentUser().id);
         setRequests(response.data);
         setLoading(false);
       } catch (error) {

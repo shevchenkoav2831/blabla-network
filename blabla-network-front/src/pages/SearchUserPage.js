@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import UsersTable from "../components/UsersTable";
 import * as backend from "../api/backend";
+import { getCurrentUser } from "../utils/common";
 
 export default function SearchUserPage() {
   const [firstName, setFirstname] = useState("");
@@ -10,7 +11,7 @@ export default function SearchUserPage() {
 
   const addFriend = async (id) => {
     try {
-      await backend.sendFriendRequest(id);
+      await backend.sendFriendRequest(getCurrentUser().id, id);
       setUsers(users.filter(u => u.id !== id));
     } catch (error) {
       console.log("[addFriend] error=%o", error);

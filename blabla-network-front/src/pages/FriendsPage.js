@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import UsersTable from "../components/UsersTable";
 import * as backend from "../api/backend";
+import { getCurrentUser } from "../utils/common";
 
 export default function FriendsPage() {
   const [friends, setFriends] = useState([]);
@@ -10,7 +11,7 @@ export default function FriendsPage() {
   useEffect(() => {
     const fetchFriends = async () => {
       try {
-        const response = await backend.getFriends();
+        const response = await backend.getFriends(getCurrentUser().id);
         setFriends(response.data);
         setLoading(false);
       } catch (error) {

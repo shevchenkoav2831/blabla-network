@@ -3,13 +3,22 @@ import random
 import bcrypt
 import mysql.connector
 
-db_host = '84.201.164.5'
+
+# localhost
+db_host = 'localhost'
 db_username = 'user'
 db_password = 'password'
 db_name = 'db'
+'''
 
+# production
+db_host = '84.201.164.5'
+db_username = 'user'
+db_password = 'YBpMaDbcPzZz'
+db_name = 'db'
+'''
 batch_size = 100
-total_size = 100
+total_size = 1000
 
 
 def read_all_lines(filename):
@@ -69,6 +78,8 @@ def get_init_users():
          "Moscow", "Pupil"),
         ("kakab@example.com", bcrypt.hashpw(b"password", bcrypt.gensalt(4)), "Kakab", "Kakabsky", "Cat", "Moscow",
          "Fat lazy cat"),
+        ("test@example.com", bcrypt.hashpw(b"password", bcrypt.gensalt(4)), "Test", "Testov", "Male", "Testburg",
+         "The Tester"),
     ]
 
 
@@ -119,7 +130,7 @@ def insert_users(users):
     connection.close()
 
 
-#truncate_users()
+truncate_users()
 
 init_users = get_init_users()
 insert_users(init_users)
