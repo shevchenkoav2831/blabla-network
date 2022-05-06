@@ -2,6 +2,8 @@
 import axios from "axios";
 import { getToken } from "../utils/common";
 
+const BASE_URL = process.env.REACT_APP_API_URL;
+
 const StatusCode = {
   Unauthorized: 401,
   Forbidden: 403,
@@ -26,8 +28,6 @@ const injectToken = (config) => {
     throw new Error(error);
   }
 };
-
-const BASE_URL = "http://localhost:9000/api/v1";
 
 class Http {
   instance = null;

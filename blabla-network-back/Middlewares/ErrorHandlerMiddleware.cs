@@ -8,10 +8,12 @@ namespace BlablaNetwork.Middlewares
     public class ErrorHandlerMiddleware
     {
         private readonly RequestDelegate _next;
+        private readonly ILogger _logger;
 
-        public ErrorHandlerMiddleware(RequestDelegate next)
+        public ErrorHandlerMiddleware(RequestDelegate next, ILoggerFactory loggerFactory)
         {
             _next = next;
+            _logger = loggerFactory.CreateLogger<LoggingMiddleware>();
         }
 
         public async Task Invoke(HttpContext context)
@@ -22,6 +24,8 @@ namespace BlablaNetwork.Middlewares
             }
             catch (Exception error)
             {
+                _logger.LogError(error, "An error has occured!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
                 var response = context.Response;
                 response.ContentType = "application/json";
 

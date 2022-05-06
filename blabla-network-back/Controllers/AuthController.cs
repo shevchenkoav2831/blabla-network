@@ -14,9 +14,11 @@ namespace BlalbaNetwork.Controllers
     {
         private readonly IUserRepository _userRepository;
         private readonly IJwtUtils _jwtUtils;
+        private readonly ILogger<AuthController> _logger;
 
-        public AuthController(IUserRepository userRepository, IJwtUtils jwtUtils)
+        public AuthController(ILogger<AuthController> logger, IUserRepository userRepository, IJwtUtils jwtUtils)
         {
+            _logger = logger;
             _userRepository = userRepository;
             _jwtUtils = jwtUtils;
         }

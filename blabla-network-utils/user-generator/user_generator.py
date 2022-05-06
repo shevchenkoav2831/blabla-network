@@ -8,8 +8,8 @@ db_username = 'user'
 db_password = 'password'
 db_name = 'db'
 
-batch_size = 1000
-total_size = 100000
+batch_size = 2
+total_size = 2
 
 
 def read_all_lines(filename):
@@ -45,7 +45,7 @@ def get_random_users(size):
     for u in range(size):
         firstname = random.choice(firstnames)
         lastname = random.choice(lastnames)
-        email = '{}{}@example.com'.format(lastname, firstname[0:2])
+        email = '{}{}{}@example.com'.format(lastname, firstname[0:2], random.randint(1111, 9999))
         password = bcrypt.hashpw(b'password', bcrypt.gensalt(4))
         gender = random.choice(genders)
         city = random.choice(cities)
@@ -119,7 +119,7 @@ def insert_users(users):
     connection.close()
 
 
-truncate_users()
+#truncate_users()
 
 init_users = get_init_users()
 insert_users(init_users)

@@ -27,6 +27,7 @@ app.UseCors(x => x
     .AllowAnyMethod()
     .AllowAnyHeader());
 
+app.UseMiddleware<LoggingMiddleware>();
 app.UseMiddleware<ErrorHandlerMiddleware>();
 app.UseMiddleware<JwtMiddleware>();
 

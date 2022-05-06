@@ -1,0 +1,10 @@
+# directories
+**/node_modules/
+**/build/
+
+# files
+Dockerfile*
+**/*.md
+**/*.ps1
+**/*.cmd
+**/*.sh
